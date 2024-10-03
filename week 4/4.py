@@ -1,0 +1,21 @@
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+data=pd.read_csv("iris_data.csv")
+fig=plt.figure()
+ax1=fig.add_subplot(611)
+ax2=fig.add_subplot(612)
+ax3=fig.add_subplot(613)
+ax4=fig.add_subplot(614)
+ax5=fig.add_subplot(615)
+ax6=fig.add_subplot(616)
+approx=np.polyfit(data['PetalLengthCm'],data['PetalWidthCm'],1)
+poly=np.poly1d(approx)
+ax1.plot(data['SepalLengthCm'],data['SepalWidthCm'],'b.')
+ax2.plot(data['SepalLengthCm'],data['PetalLengthCm'],'b.')
+ax3.plot(data['SepalLengthCm'],data['PetalWidthCm'],'b.')
+ax4.plot(data['SepalWidthCm'],data['PetalLengthCm'],'b.')
+ax5.plot(data['SepalWidthCm'],data['PetalWidthCm'],'b.')
+ax6.plot(data['PetalLengthCm'],data['PetalWidthCm'],'b.')
+ax6.plot(data['PetalLengthCm'],poly(data['PetalLengthCm']),'r')
+plt.show()
